@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>R MIEF Skills Workshop — Session 1</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Marc-Andrea Fiorina" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="hygge.css" type="text/css" />
+    <link rel="stylesheet" href="custom_css.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+class: center, middle
+
+# R MIEF Skills Workshop
+
+## Session 1
+
+### January 12, 2026
+
+---
+
+## Introduction
+
+.panelset[
+
+.panel[.panel-name[Purpose]
+
+### Purpose of this course: Put you on the right track to use R for data or policy analysis.
+
+- As data work has become near-ubiquitous in the research/policy world, so have basic tasks like aggregating, analyzing, summarizing, and visualizing data.
+
+- **The vast majority** of research assistant/analyst (RA) work consists of cleaning and constructing datasets for analysis
+
+- **Entry-level RA positions rarely require complex econometric/regression skills**
+
+]
+
+.panel[.panel-name[Learning R]
+
+### You should think of learning R like learning a language.
+
+- Taking a six-hour course won't make you proficient in it
+
+- If you don't practice it, you'll forget it
+
+- Solution — **Find ways to use R in your life, either personally or professionally**
+
+]
+
+]
+
+---
+
+## Why R?
+
+.panelset[
+
+.panel[.panel-name[Jobs]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+- Many entry-level research jobs in policy, economic, development, or political science institutions now expect quantitative work using Stata, R, or Python
+
+- Coding skills make you more valuable in any position — data adds value to nearly every kind of research!
+
+]
+
+.panel[.panel-name[Beautiful Tables]
+
+&lt;img src="pics/table_example.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+]
+
+.panel[.panel-name[Beautiful Graphs]
+
+&lt;img src="pics/plot_example.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+]
+
+.panel[.panel-name[Beautiful Maps]
+
+&lt;img src="pics/map_example.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+]
+
+]
+
+---
+
+class: middle
+
+## Today
+
+- Learn how to:
+  - Think as a coder
+  - Identify the basic components of data analysis
+  - Set up your environment to use R and RStudio
+  - Identify and address basic errors in your R setup
+  
+- Be introduced to:
+  - The R coding language
+  - The building blocks of coding in R: scalars, vectors, lists, and data frames
+  - Creating a scatter plot, density plot, and bar chart using the `ggplot2` package
+  - Creating flexible and easy-to-read tables of any dataset using the `gt` package
+  - Creating simple academic-standard regression output tables using the `stargazer` package
+
+---
+
+class: middle
+
+## Think As A Coder
+
+### Recipe Analogy
+
+.content-box-red[
+- Your data are your ingredients
+- Your script is your recipe
+- Your output is your... cake? Whatever you're making
+]
+
+.content-box-blue[
+What this means:
+- **Make sure you have all of the ingredients you need.**
+- **Follow every step of the recipe — you can't skip any steps!**
+- If you mess up somewhere, you have to start from scratch to make sure that you get the correct outcome.
+]
+
+---
+
+class: middle
+
+## Identify the Basic Components of Data Analysis
+
+.pull-left[
+.content-box-red[
+&lt;b&gt;Three main components to your data analysis:&lt;/b&gt;
+- Data
+- Code
+- Outputs
+]
+]
+
+.pull-right[
+.content-box-blue[
+&lt;b&gt;Questions to ask:&lt;/b&gt;
+- Where is the file stored?
+- In which format is the file?
+- How easy is it for you/other people to access it?
+- Is it intuitive for you to navigate to the file?
+]
+]
+
+---
+
+## Your RStudio Environment
+
+&lt;img src="pics/rstudio.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Setting Up Your RStudio Environment
+
+.panelset[
+
+.panel[.panel-name[Setting Up Your Data Structure]
+
+&lt;img src="pics/folder.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+.content-box-green[
+- code
+- data
+  - raw
+  - intermediate
+- output
+- documentation (Optional)
+- slides (Optional)
+]
+
+]
+
+.panel[.panel-name[Setting Up Your Script]
+
+Defining your code's purpose — What are its inputs? What are its outputs?
+
+&lt;img src="pics/script1.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+Set up your packages — Which user-created functions do you plan to use?
+
+&lt;img src="pics/script2.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+Import your data — Which data frames do you need to fulfill the script's purpose?
+
+&lt;img src="pics/script3.png" width="40%" style="display: block; margin: auto;" /&gt;
+
+]
+
+]
+
+---
+
+## R Basics
+
+.panelset[
+
+.panel[.panel-name[Scalars]
+
+This is a scalar:
+
+
+``` r
+a &lt;- 2
+```
+
+It's an object (`a`) with a single value (`2`). Notice that we assign the value `2` to `a` using an arrow `&lt;-`.
+
+]
+
+.panel[.panel-name[Vectors]
+
+These are vectors:
+
+
+``` r
+vector &lt;- c(1, 2, 5)
+vector
+```
+
+```
+## [1] 1 2 5
+```
+
+
+``` r
+vector &lt;- 2:6
+vector
+```
+
+```
+## [1] 2 3 4 5 6
+```
+
+]
+
+.panel[.panel-name[More Vectors]
+
+These are more vectors:
+
+
+``` r
+vector &lt;- seq(2, 3, by = 0.5)
+vector
+```
+
+```
+## [1] 2.0 2.5 3.0
+```
+
+Vectors take multiple values. Notice that vectors have a specific **order**: `c(1, 2)` is not the same as `c(2, 1)`.
+
+]
+
+.panel[.panel-name[Selecting Vector Elements]
+
+
+``` r
+## By Position
+
+x[4]       # Fourth element
+
+x[-4]      # Everything but the fourth element
+
+x[2:4]     # Elements two to four
+
+x[-(2:4)]  # Everything but elements two to four
+
+x[c(1, 5)] # Elements one and five
+```
+
+
+``` r
+# By Value
+
+x[x == 10]           # Elements which are equal to 10
+
+x[x &lt; 0]             # Elements that are less than zero
+
+x[x %in% c(1, 2, 5)] # Elements in the set 1, 2, 5
+```
+
+]
+  
+]
+
+---
+
+## R Basics
+
+.panelset[
+
+.panel[.panel-name[Lists]
+
+This is a list:
+
+
+``` r
+y &lt;- list("a", 1, "b")
+```
+
+Lists are different from vectors in one key manner: **they can take objects of different classes**. Vectors can only take objects of the same class.
+
+]
+
+.panel[.panel-name[Some Classes]
+
+Here are some classes in R:
+
+
+``` r
+a &lt;- "a"    # Character
+b &lt;- 1      # Integer
+c &lt;- 1.2    # Numeric
+d &lt;- 1 + 2i # Complex
+e &lt;- TRUE   # Logical
+```
+
+]
+
+.panel[.panel-name[Data Frames]
+
+This is a data frame:
+
+
+``` r
+df &lt;- data.frame(
+    first_name = c("Mark", "Mary", "July"),
+    last_name  = c("Smith", "John", "Sanchez"),
+    age        = c(21, 34, 55)
+)
+```
+
+At their core, data frames are just a group of named vectors of the same length.
+In practice, we visualize data frames as **tables** where each vector is a **column**, or variable, and each group of nth elements of the vectors is a **row**, or observation.
+
+]
+
+.panel[.panel-name[Assignment vs. Printing]
+
+KEY — We can classify the code we write in our script into two general categories:
+
+1- Assignment code. We are **assigning** a value to an object:
+
+``` r
+a &lt;- 2
+```
+
+2- Printing code. We are **printing** an object's value:
+
+``` r
+a
+```
+
+```
+## [1] 2
+```
+
+
+
+``` r
+print(a)
+```
+
+```
+## [1] 2
+```
+
+**Only 2- results in something appearing in your console. When you assign a value to an object, nothing prints in the console.**
+
+]
+
+]
+
+---
+
+## R Basics
+
+NOTE — R works in a manner that allows to write a specific function over multiple lines. This is called a **code chunk**.
+
+This:
+
+``` r
+a &lt;- mean(c(seq(1, 4, by = 0.5)))
+
+a
+```
+
+```
+## [1] 2.5
+```
+
+Is the same as this:
+
+``` r
+a &lt;- mean(
+    c(
+        seq(1, 4, by = 0.5)
+    )
+)
+
+a
+```
+
+```
+## [1] 2.5
+```
+
+---
+
+## R Basics
+
+.panelset[
+
+.panel[.panel-name[Functions]
+
+Like in mathematics, a function is an expression or rule that takes an input, or *argument*, and returns an *output*. A function is any `f` such that `f(x) = y`.
+
+In R, functions take the following form:
+
+
+``` r
+# The function is called
+sum_function &lt;- function(x, y) { # x and y are the function's arguments
+    x + y # Within the brackets {}, we define the function's output
+}
+
+sum_function(2, 3)
+```
+
+```
+## [1] 5
+```
+
+The vast majority of using R is done using functions, either included with R or written by external users. For instance, to find the sum of 2 and 3, we can use the "base R" function `sum()`.
+
+]
+
+.panel[.panel-name[Packages]
+
+A package is a bundle of functions created by external users. They innovate and, in many cases, improve upon base R functions. Most work in R is done using functions from external packages.
+
+We will look at how to install and load packages shortly. Examples of commonly-used packages are `dplyr`, `tidyr`, `stringr`, `ggplot2`, and `data.table`.
+
+]
+
+]
+
+---
+
+## R Basics
+
+You can click anywhere in the code chunk and click "run" or Cmd+Enter (Mac)/Ctrl+Enter (Windows), and the whole chunk will run.
+
+KEY — If you only select a portion of the code chunk and run that, then R will identify the chunk as unfinished and refuse to let you do anything else until you've "completed" it.
+
+---
+
+class: center, middle
+
+# Coding Set Up
+
+---
+
+.panelset[
+
+.panel[.panel-name[Installing Packages]
+
+Packages are groups of user-created functions that help us accomplish tasks that would be harder/impossible using base R functions.
+
+### Easy
+
+
+``` r
+install.packages("tidyverse")
+library(tidyverse)
+```
+
+### Better
+
+The `pacman` package installs packages if they aren't installed yet, loads them otherwise
+
+
+``` r
+if(!require(pacman)) install.packages("pacman")
+pacman::p_load(tidyverse)
+```
+
+]
+
+.panel[.panel-name[Setting up File Paths]
+
+File paths help R identify where the files you want to use are located.
+
+You want your code to be **reproducible** and **easy to use by other people**
+
+Simple solution: Create an `.rproj` file that people can open to access your R environment
+
+Better solution:
+
+
+``` r
+# Set User (this allows us to use fixed file paths but to adapt them
+# for multiple possible users)
+      # 1 — Marc-Andrea Fiorina
+      # 2 — Enter here if needed
+  
+user &lt;- 1
+  
+if(user == 1) {
+    # Absolute file path
+    main_filepath &lt;- "/Users/marc-andreafiorina/Dropbox/SAIS R Course/"
+}
+
+# Notice the relative file paths
+data_filepath &lt;- paste0(main_filepath, "data/")
+```
+
+]
+
+]
+
+---
+
+class: center, middle
+
+# Importing Data
+
+---
+
+class: middle
+
+Easiest file type to import into R is a .csv file. But you can also import .xlsx, .dta (Stata), etc.
+
+- Easy `-&gt;` `read.csv()`
+- Harder (faster) `-&gt;` `data.table::fread()`
+
+
+``` r
+norms_values_data &lt;- data.table::fread(
+    "raw/wvs_values_norms_data.csv",
+    na.strings = ""
+)
+```
+
+Note the construction of the "harder" method, with the "`::`". This is used to refer to the package from which the function originates. The structure is `package::function()`.
+
+---
+
+## Basic Issues in RStudio
+### Data Not Loading
+
+&lt;img src="pics/data_not_loading1.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+
+&lt;img src="pics/data_not_loading2.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Basic Issues in RStudio
+### Data Not Loading
+
+Check:
+- Working directory — `getwd()` or check the top of the RStudio console.
+- File path — are there any typos? Is your file where you expect it to be?
+
+Solutions:
+- If you were provided with an `.Rproj` file alongside your script, make sure that you opened the project.
+- Modify the working directory using `setwd()` or correct the file path if need be!
+
+---
+
+## Basic Issues in RStudio
+### Function Not Found
+
+&lt;img src="pics/function_not_found.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Basic Issues in RStudio
+### Function Not Found
+
+Check:
+- From which package the function comes. You can do this using `??FUNCTION NAME` (e.g. `??tabyl`) or through a Google search.
+- That the package is (1) installed in your environment and (2) loaded. Having the package installed isn't sufficient!
+
+Solutions:
+- If the package isn't installed, use `install.packages("tabyl")`. If the package isn't loaded, use `library(tabyl)` or `pacman::p_load(tabyl)`.
+
+---
+
+## Basic Issues in RStudio
+### Code Not Running
+
+&lt;img src="pics/code_not_running.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Basic Issues in RStudio
+### Code Not Running
+
+Check:
+- That you didn't miss a parenthesis (`)`) or bracket (`}`) in your code! This is the most common reason.
+- If you missed it, the console will show a `+` at the start of the console line instead of the expected `&gt;`.
+
+Solutions:
+- Type gibberish and/or the missing parenthesis/bracket until the `&gt;` reappears. More likely, you'll have to rerun the code chunk to make sure it works!
+
+---
+
+## Basic Issues in RStudio
+### Object Not Found
+
+&lt;img src="pics/object_not_found.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Basic Issues in RStudio
+### Object Not Found
+
+Check:
+- Whether the object exists in your environment. More likely than not, you either misspelt the name of the object, or you skipped the code that creates it (remember that a script is like a recipe and steps can't be skipped!).
+
+Solutions:
+- Backtrack in your code and run the chunk that creates the object.
+- If a typo is at fault, correct the typo.
+
+---
+
+class: center, middle
+
+## Practical Exercise
+### Using the World Values Survey Dataset
+
+---
+&lt;font size='+3'&gt;&lt;b&gt;World Values Survey&lt;/b&gt;&lt;/font&gt;
+
+&lt;font size='+2'&gt;&lt;b&gt;Background&lt;/b&gt;&lt;/font&gt;
+&lt;br&gt; &lt;br&gt;
+*"The survey, which started in 1981, seeks to use the most rigorous, high-quality research designs in each country. The WVS consists of nationally representative surveys conducted in almost 100 countries which contain almost 90 percent of the world’s population, using a common questionnaire. [...] WVS seeks to help scientists and policy makers understand changes in the beliefs, values and motivations of people throughout the world."*
+
+&lt;font size='+2'&gt;&lt;b&gt;Survey Contents&lt;/b&gt;&lt;/font&gt;
+.pull-left[
+- Social values, attitudes &amp; stereotypes
+- Societal well-being
+- Social capital, trust and organizational membership
+- Economic values
+- Corruption
+- Migration
+- Post-materialist index
+]
+
+.pull-right[
+- Science &amp; technology
+- Religious values
+- Security
+- Ethical values &amp; norms
+- Political interest and political participation
+- Political culture and political regimes
+- Demography
+]
+
+---
+
+### Today's practical component
+
+1— Download the World Values Survey (Wave 7) at this link: [https://www.worldvaluessurvey.org/WVSDocumentationWV7.jsp](https://www.worldvaluessurvey.org/WVSDocumentationWV7.jsp)
+
+2— Set up your data analysis folder. Make sure that it contains the following folders:
+  - data
+      - raw
+      - intermediate
+  - code
+  - output
+  - documentation
+    
+3— Place the data and documentation files that you find appropriate for your analysis in the corresponding folders.
+
+4— Open RStudio and click on "New Project" in the "File" dropdown menu. Navigate to your data folder and select it.
+
+---
+
+### Today's practical component
+
+5— Set up your R Script. It should have the following components:
+  - Package setup. For now, have the script load the `dplyr`, `data.table`, and `skimr` packages.
+  - Data import. Import your data into the script using `read.csv()` or `fread()`. Remember to give your data frame an intuitive name!
+    
+6— Test your R Script. Type and run the following line in your code: `skim([[DATASETNAME]])`.
+&lt;br&gt;**Replace [[DATASETNAME]] with the name you gave your dataset.** If this works without issue, you're free to take a break!
+
+---
+
+class: center, middle
+
+# BREAK
+
+---
+
+class: center, middle
+
+## Data Visualization — Descriptive Statistics — Plots
+
+---
+
+## Descriptive Stats Plots
+
+`ggplot2` is the gold standard in data visualization in data work. It's one of the main reason that people use R over other programming languages.
+
+Very simple syntax and allows you to add elements very easily.
+
+You can use `ggplot2` to create any type of plot you can think of.
+
+I've included a lot of links at the end of these slides to explore the possibilities of `ggplot2` further. Strongly recommend you use them or at least save them somewhere.
+
+&lt;img src="pics/plot_example2.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+### The Magic of `ggplot2`
+
+Using `ggplot2` to create plots is great because the **structure** it sets up makes plot creation intuitive.
+
+.pull-left-wide[
+
+``` r
+ggplot(data = &lt;DATA&gt;) +
+  &lt;GEOM_FUNCTION&gt;(
+     mapping = aes(&lt;MAPPINGS&gt;),
+     stat = &lt;STAT&gt;,
+     position = &lt;POSITION&gt;
+  ) +
+  &lt;SCALE_FUNTION&gt; +
+  &lt;FACET_FUNCTION&gt; +
+  &lt;THEME_FUNCTION&gt;
+```
+]
+
+.pull-right-wide[
+1. `Data`: The data that you want to visualize
+2. `Layers`: geom\_ and stat\_ → The geometric shapes and statistical summaries representing the data
+3. `Aesthetics`: aes() → Aesthetic mappings of the geometric and statistical objects
+4. `Scales`: scale_ → Maps between the data and the aesthetic dimensions
+5. `Facets`: facet_ → The arrangement of the data into a grid of plots
+6. `Visual themes`: theme() and theme_ → The overall visual defaults of a plot
+]
+
+---
+
+### Scatter Plot — Step-by-Step
+
+.panelset[
+
+.panel[.panel-name[Dataset]
+
+Start with a dataset you want to visualize
+
+
+``` r
+head(mtcars)
+```
+
+```
+##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+```
+
+]
+
+.panel[.panel-name[Convert to Plot]
+
+.pull-left-wide[
+
+
+``` r
+ggplot(mtcars)
+```
+
+]
+
+.pull-right-wide[
+
+&lt;img src="session_1_files/figure-html/unnamed-chunk-37-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+]
+
+.panel[.panel-name[Add Something]
+
+.pull-left-wide[
+
+
+``` r
+ggplot(mtcars) +
+  geom_point(
+    aes(x = mpg, y = wt)
+  )
+```
+
+]
+
+.pull-right-wide[
+
+&lt;img src="session_1_files/figure-html/unnamed-chunk-39-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+]
+
+]
+
+---
+
+### Scatter Plot — Make It Better
+
+.pull-left-wide[
+
+
+``` r
+ggplot(mtcars) +
+  geom_point(
+    aes(
+      x = mpg, y = wt,
+      color = factor(cyl)
+    ),
+    size = 6
+  ) +
+  xlab("Miles/Gallon") +
+  ylab("Weight") +
+  scale_color_discrete(
+    name = "# of Cylinders"
+  ) +
+  theme_minimal(base_size = 24) +
+  theme(
+    legend.position = "bottom"
+  )
+```
+
+]
+
+.pull-right-wide[
+
+&lt;img src="session_1_files/figure-html/unnamed-chunk-41-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+### Bar Plot — Step-by-Step
+
+.panelset[
+
+.panel[.panel-name[Dataset]
+
+Start with a dataset you want to visualize
+
+
+``` r
+mtcars_summary &lt;- mtcars %&gt;%
+  group_by(cyl) %&gt;%
+  summarize(
+    mpg = mean(mpg)
+  ) %&gt;%
+  ungroup()
+
+mtcars_summary
+```
+
+```
+## # A tibble: 3 × 2
+##     cyl   mpg
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1     4  26.7
+## 2     6  19.7
+## 3     8  15.1
+```
+
+]
+
+.panel[.panel-name[Convert to Plot]
+
+.pull-left-wide[
+
+
+``` r
+ggplot(mtcars_summary)
+```
+
+]
+
+.pull-right-wide[
+
+&lt;img src="session_1_files/figure-html/unnamed-chunk-44-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+]
+
+.panel[.panel-name[Add Something]
+
+.pull-left-wide[
+
+
+``` r
+ggplot(mtcars_summary) +
+  geom_col(
+    aes(
+      x = cyl,
+      y = mpg
+    )
+  )
+```
+
+]
+
+.pull-right-wide[
+
+&lt;img src="session_1_files/figure-html/unnamed-chunk-46-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+]
+
+.panel[.panel-name[Fix Class Issue]
+
+.pull-left-wide[
+
+
+``` r
+ggplot(mtcars_summary) +
+  geom_col(
+    aes(
+      x = factor(cyl),
+      y = mpg
+    )
+  )
+```
+
+`cyl` categorizes cars by number of cylinders. Although the values are numbers, it is a **categorical** variable. We communicate this to `ggplot()` using the `factor()` function.
+
+]
+
+.pull-right-wide[
+
+&lt;img src="session_1_files/figure-html/unnamed-chunk-48-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+]
+
+]
+
+---
+
+### Bar Plot — Make It Better
+
+.pull-left-wide[
+
+
+``` r
+ggplot(mtcars_summary) +
+  geom_col(
+    aes(
+      x    = factor(cyl),
+      y    = mpg,
+      fill = factor(cyl)
+    )
+  ) +
+  xlab("# of Cylinders") +
+  ylab("Miles/Gallon") +
+  scale_y_continuous(
+      limits = c(0, 30)
+  ) +
+  theme_minimal(base_size = 24) +
+  theme(
+    legend.position = "none"
+  )
+```
+
+]
+
+.pull-right-wide[
+
+&lt;img src="session_1_files/figure-html/unnamed-chunk-50-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+class: middle
+name: plot-standards
+
+## Plot Standards
+
+.content-box-blue[
+1. Your plot should be &lt;font color = "red"&gt;**properly labeled**&lt;/font&gt;:
+    - The plot should have a title describing its content
+    - Axes should be labeled
+    - Legend (if any) should have a title and labels
+    
+2. Your plot should be &lt;font color = "red"&gt;**properly formatted**&lt;/font&gt;:
+    - Axis dimensions should be appropriate. What is appropriate varies depending on context, but usually you should aim to fill the plot space with data
+    - Text size should be large enough for text to be legible
+    
+3. Your plot should be &lt;font color = "red"&gt;**self contained**&lt;/font&gt;. People should be able to understand your plot and its data without any other context or explanatory text. That means:
+    - A caption note that includes data source and any important data construction notes
+    - Title and subtitle that deliver the plot's *message*
+]
+
+---
+
+class: center, middle
+
+## Data Visualization — Descriptive Statistics — Tables
+
+---
+
+## Descriptive Statistics Tables
+
+Thankfully, not every RA position requires academic-standard tables or use of LateX.
+
+It is still useful, however, to be able to communicate descriptive statistics about data.
+
+There are countless R packages to help do this. Today, we're looking at the `gt` package. It's simple to use and it's very easy to create good-looking tables using it.
+
+`gt` exports into .png, .pdf, or .html. You can add interactive elements, plots within columns.
+
+&lt;img src="pics/gt_table_example.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Descriptive Statistics Table — Step-by-Step
+
+We will mainly use the example in the script for this. To summarize, the steps are:
+
+- Create a dataset you want to export
+
+- Run the dataset through the `gt()` function to create a gt object
+
+- Customize the table using functions from the `gt` package (see online for further things you can do). Examples of what you can do include:
+    - Modify column names — `cols_label()`
+    - Modify borders — `tab_style()`, `cell_borders()`
+    - Add colors conditional on cell value — `data_color()`
+    - Add title/subtitle — `tab_header()`
+
+- Export the table using `gtsave()`
+
+---
+
+class: middle, center
+
+## Data Visualization — Simple Regression Table
+
+---
+
+### Regression Tables
+
+Regression tables are very common in economic/policy analysis.
+
+They're very simple to create using R and a software called **LateX** (pronounced latek).
+
+Unless you're getting into academic research, you don't need to know how to properly use LateX. Just enough to:
+
+- Export the LateX script from R
+- Copy/paste it into a LateX-reading software, e.g. Overleaf
+- Export the pdf or png to share
+
+&lt;img src="session_1_files/figure-html/unnamed-chunk-52-1.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Regression Table — Step by Step
+
+.panelset[
+
+.panel[.panel-name[Run Regression in R]
+
+
+``` r
+# Simplest regression format in R
+
+reg_example &lt;- lm(
+    outcome_variable ~ independent_variable + control_variables,
+    data = dataset
+)
+
+# Observe results
+
+reg_example %&gt;% summary()
+```
+
+]
+
+.panel[.panel-name[Convert to Exportable Table]
+
+Simply do one of these!
+
+
+``` r
+reg_example_ht &lt;- reg_example %&gt;%
+    huxtable::huxreg()
+```
+
+OR
+
+
+``` r
+reg_example_sg &lt;- reg_example %&gt;%
+    stargazer::stargazer() # Many options to make prettier
+```
+
+]
+
+]
+
+---
+
+### Regression Table — Step by Step
+
+.panelset[
+
+.panel[.panel-name[Export Huxtable Table]
+
+Some simple options for the Huxtable table:
+
+
+``` r
+  huxtable::quick_latex(
+      reg_example_ht,
+      file = "filepath/filepath/filepath/reg_example_ht.tex"
+  )
+  
+  huxtable::quick_pdf
+      reg_example_ht,
+      file = "filepath/filepath/filepath/reg_example_ht.pdf"
+  )
+  
+  huxtable::quick_html(
+      reg_example_ht,
+      file = "filepath/filepath/filepath/reg_example_ht.html"
+  )
+```
+
+]
+
+.panel[.panel-name[Export Stargazer Table]
+
+
+``` r
+# You can export a LateX script using the 'writeLines' function
+
+writeLines(
+    reg_example_sg,
+    "filepath/filepath/filepath/reg_example_sg.tex"
+)
+```
+
+To visualize your table, the easiest solution is to:
+
+- Create a free Overleaf account on [overleaf.com](https://www.overleaf.com)
+- Open a new document
+- Copy/paste your .tex output in between the `begin{document}` and `end{document}` lines
+- Click compile and then save!
+
+You can also install the `tinytex` package and use `pdftolatex` to save a PDF file.
+
+]
+
+]
+
+---
+
+class: middle
+
+# Wednesday
+
+- Practice visualizations
+- Learn how to wrangle data
+
+---
+
+class: middle
+
+## Links
+
+Thomas Mock, “A Gentle Introduction to Tidy Statistics in R” (**[blog post](https://themockup.blog/posts/2018-12-10-a-gentle-guide-to-tidy-statistics-in-r/)** and **[video](https://www.rstudio.com/resources/webinars/a-gentle-introduction-to-tidy-statistics-in-r/)**)
+
+Hadley Wickham, Mine Çetinkaya-Rundel &amp; Garrett Grolemund, **[R for Data Science (2e)](https://r4ds.hadley.nz/)**
+
+RStudio, **[RStudio Cheatsheets](https://www.rstudio.com/resources/cheatsheets/)**
+
+---
+
+## Links
+
+&lt;ins&gt;**Tables**&lt;/ins&gt;
+
+Marek Hlavac, **[“stargazer: beautiful LATEX, HTML and ASCII tables from R statistical output”](https://cran.rproject.org/web/packages/stargazer/vignettes/stargazer.pdf)**
+
+Thomas Mock, **[“gt - a (G)rammar of (T)ables”](https://themockup.blog/posts/2020-05-16-gt-a-grammer-of-tables/)**
+
+&lt;ins&gt;**Plots**&lt;/ins&gt;
+
+Alicia Horsch, **[“A quick introduction to ggplot2”](https://towardsdatascience.com/a-quick-introduction-to-ggplot2-d406f83bb9c9)**
+
+RStudio, **[RStudio Cheatsheets](https://www.rstudio.com/resources/cheatsheets/)**
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "slideNumberFormat": "%current%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
