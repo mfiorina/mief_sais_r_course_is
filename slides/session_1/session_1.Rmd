@@ -208,66 +208,6 @@ knitr::include_graphics(
 
 ---
 
-## Setting Up Your RStudio Environment
-
-.panelset[
-
-.panel[.panel-name[Setting Up Your Data Structure]
-
-```{r, echo = FALSE, out.width = "55%", fig.align = "center"}
-
-knitr::include_graphics(
-    "pics/folder.png"
-)
-```
-
-.content-box-green[
-- code
-- data
-  - raw
-  - intermediate
-- output
-- documentation (Optional)
-- slides (Optional)
-]
-
-]
-
-.panel[.panel-name[Setting Up Your Script]
-
-Defining your code's purpose — What are its inputs? What are its outputs?
-
-```{r, echo = FALSE, out.width = "50%", fig.align = "center"}
-
-knitr::include_graphics(
-    "pics/script1.png"
-)
-```
-
-Set up your packages — Which user-created functions do you plan to use?
-
-```{r, echo = FALSE, out.width = "50%", fig.align = "center"}
-
-knitr::include_graphics(
-    "pics/script2.png"
-)
-```
-
-Import your data — Which data frames do you need to fulfill the script's purpose?
-
-```{r, echo = FALSE, out.width = "40%", fig.align = "center"}
-
-knitr::include_graphics(
-    "pics/script3.png"
-)
-```
-
-]
-
-]
-
----
-
 ## R Basics
 
 .panelset[
@@ -497,9 +437,67 @@ class: center, middle
 
 ---
 
+## Setting Up Your RStudio Environment
+
 .panelset[
 
-.panel[.panel-name[Installing Packages]
+.panel[.panel-name[Setting Up Your Data Structure]
+
+```{r, echo = FALSE, out.width = "55%", fig.align = "center"}
+
+knitr::include_graphics(
+    "pics/folder.png"
+)
+```
+
+.content-box-green[
+- code
+- data
+  - raw
+  - intermediate
+- output
+- documentation (Optional)
+- slides (Optional)
+]
+
+]
+
+.panel[.panel-name[Setting Up Your Script]
+
+Defining your code's purpose — What are its inputs? What are its outputs?
+
+```{r, echo = FALSE, out.width = "50%", fig.align = "center"}
+
+knitr::include_graphics(
+    "pics/script1.png"
+)
+```
+
+Set up your packages — Which user-created functions do you plan to use?
+
+```{r, echo = FALSE, out.width = "50%", fig.align = "center"}
+
+knitr::include_graphics(
+    "pics/script2.png"
+)
+```
+
+Import your data — Which data frames do you need to fulfill the script's purpose?
+
+```{r, echo = FALSE, out.width = "40%", fig.align = "center"}
+
+knitr::include_graphics(
+    "pics/script3.png"
+)
+```
+
+]
+
+]
+
+---
+
+## Installing Packages
 
 Packages are groups of user-created functions that help us accomplish tasks that would be harder/impossible using base R functions.
 
@@ -519,9 +517,9 @@ if(!require(pacman)) install.packages("pacman")
 pacman::p_load(tidyverse)
 ```
 
-]
+---
 
-.panel[.panel-name[Setting up File Paths]
+## Setting up File Paths
 
 File paths help R identify where the files you want to use are located.
 
@@ -548,19 +546,9 @@ if(user == 1) {
 data_filepath <- paste0(main_filepath, "data/")
 ```
 
-]
-
-]
-
 ---
 
-class: center, middle
-
-# Importing Data
-
----
-
-class: middle
+## Importing Data
 
 Easiest file type to import into R is a .csv file. But you can also import .xlsx, .dta (Stata), etc.
 
