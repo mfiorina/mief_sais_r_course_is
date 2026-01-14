@@ -216,13 +216,13 @@
     # 1. Find mean values for 'importance in life' variables (Q1-6) for countries in another region
     #    than Europe
   
-    # 2. Calculate average 'importance' for these life subjects in countries in that non-Europe region
+    # 2. Calculate average 'importance' across these life subjects in these non-European countries
   
-    # 3. Perform the same analysis, either on European countries or other countries, for one of
-    #    the following group of indicators in the dataset:
-           # Important child qualities: Q7-18
-           # Neighbors: Q19-26
+    # 3. Perform the same analysis (1. and 2.), either on European countries or other countries,
+    #    for one of the following group of indicators in the dataset:
+           # Important child qualities: Q7-17
+           # Neighbors: Q18-26
            # Statements to agree with: Q27-41
   
-    # 4. Save one dataset for each of the tasks above.
+    # 4. Save one or more datasets for each of the tasks above.
   
