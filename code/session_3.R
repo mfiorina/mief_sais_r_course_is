@@ -192,7 +192,7 @@
       Q02_life_friends  = mean(Q02_life_friends,  na.rm = TRUE),
       Q03_life_leisure  = mean(Q03_life_leisure,  na.rm = TRUE),
       Q04_life_politics = mean(Q04_life_politics, na.rm = TRUE),
-      Q05_life_work   = mean(Q05_life_work,   na.rm = TRUE),
+      Q05_life_work     = mean(Q05_life_work,   na.rm = TRUE),
       Q06_life_religion = mean(Q06_life_religion, na.rm = TRUE)
     ) %>%
     ungroup() # Always remember to do this! Otherwise your future code will do weird
